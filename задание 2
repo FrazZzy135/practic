@@ -1,0 +1,29 @@
+using System;
+
+namespace Assignment
+{
+    public class ProgramConfig
+    {
+        public const string Version = "1.0.0";
+        public const string Developer = "Александр Романов";
+
+        public static void DisplayProgramInfo()
+        {
+            Console.WriteLine(" Конфигурация программы ");
+            Console.WriteLine($"Версия ПО: {Version}");
+            Console.WriteLine($"Разработчик: {Developer}");
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            ProgramConfig.DisplayProgramInfo();
+
+            Console.WriteLine(ProgramConfig.Version);
+
+            Console.ReadKey();
+        }
+    }
+}

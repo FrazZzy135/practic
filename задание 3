@@ -1,0 +1,67 @@
+using System;
+
+public interface IWork
+{
+    void Work();
+}
+
+
+public interface ICharge
+{
+    void Charge();
+}
+
+
+public class Robot : IWork, ICharge
+{
+    public string Name { get; set; }
+    private int energy;
+
+    public int Energy
+    {
+        get => energy;
+        set
+        {
+            if (value < 0) energy = 0;
+            else if (value > 100) energy = 100;
+            else energy = value;
+        }
+    }
+
+    public Robot(string name, int initialEnergy)
+    {
+        Name = name;
+        Energy = initialEnergy;
+    }
+
+    public void Work()
+    {
+        Energy -= 20;
+        Console.WriteLine($"{Name} работает. Текущая энергия: {Energy}");
+    }
+
+    public void Charge()
+    {
+        Energy += 50;
+        Console.WriteLine($"{Name} заряжается. Текущая энергия: {Energy}");
+    }
+}
+
+
+class Program
+{
+    static void Main()
+    {
+        Robot robot = new Robot("Робот", 100);
+
+        
+        robot.Work();
+        robot.Work();
+
+        
+        robot.Charge();
+
+      
+        robot.Work();
+    }
+}
